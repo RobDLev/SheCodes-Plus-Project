@@ -55,3 +55,12 @@ btn-primary {
 #current-weather {
   margin: 0 15%;
 }
+
+#open-source-signature {
+  font-size: smaller;
+  padding-left: 300px;
+}
+
+#github-link {
+  text-decoration: none;
+}
