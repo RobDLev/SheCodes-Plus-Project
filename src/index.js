@@ -1,4 +1,14 @@
-//Homework Task 1
+let apiKey = "59f62e89b6fe8b8e9e10ac59471b14c9";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=San+Francisco&units=metric&appid=${apiKey}`;
+
+axios.get(apiUrl).then(setDefaultTemp);
+
+function setDefaultTemp(response) {
+  let currentTemp = Math.round(response.data.main.temp);
+  let temperatureDefault = document.querySelector("#current-temp");
+  temperatureDefault.innerHTML = `${currentTemp}°C`;
+}
+
 function updateCity(event) {
   event.preventDefault();
   let searchBar = document.querySelector("#city-search-bar");
@@ -22,9 +32,7 @@ function updateCityTwo(response) {
 
 let searchButton = document.querySelector("#search-button");
 searchButton.addEventListener("click", updateCity);
-//End Homework Task 1
 
-//Homework Task 2
 let currentCityButton = document.querySelector("#current-city-button");
 currentCityButton.addEventListener("click", showPosition);
 
@@ -51,7 +59,6 @@ function updateCurrentCity(response) {
   locationMain.innerHTML = `${currentCity}, ${currentCountry}`;
   temperatureMain.innerHTML = `${currentTemp}°C`;
 }
-//End Homework Task 2
 
 let now = new Date();
 let date = now.getDate();
