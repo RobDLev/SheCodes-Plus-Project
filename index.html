@@ -19,10 +19,10 @@
     <link rel="stylesheet" href="src/styles.css" />
   </head>
   <body>
-    <div class="container border border-3 border-info rounded col-6">
+    <div class="container border border-3 border-info rounded px-4 py-3">
       <form>
         <div class="row">
-          <div class="col-12">
+          <div class="col-6">
             <input
               type="text"
               class="form-control"
@@ -46,24 +46,25 @@
           </div>
         </div>
       </form>
-      <div class="border border-info rounded" id="current-weather">
-        <h3 id="current-city">San Francisco, CA, USA</h3>
-        <h3 id="current-temp">11°C</h3>
-        <span class="temp-scale">
-          <a href="#" id="celsius-link">°C</a>
-          |
-          <a href="#" id="fahrenheit-link">°F</a>
-        </span>
+      <div class="row">
+        <div class="border border-info rounded col-6" id="current-weather">
+          <h3 id="current-city">San Francisco, CA, USA</h3>
+          <h3 id="current-temp">11°C</h3>
+          <span class="temp-scale">
+            <a href="#" id="celsius-link">°C</a>
+            |
+            <a href="#" id="fahrenheit-link">°F</a>
+          </span>
 
-        <img
-          src="images/mostlycloudy.png"
-          class="img-fluid"
-          alt="mostly cloudy"
-        />
-        <h4>Sunday, 3:35 PM<br />May 3, 2021</h4>
-      </div>
-      <div class="forecast">
-        <ul class="list-group border border-info rounded">
+          <img
+            src="images/mostlycloudy.png"
+            class="img-fluid"
+            alt="mostly cloudy"
+          />
+          <h4>Sunday, 3:35 PM<br />May 3, 2021</h4>
+        </div>
+
+        <ul class="list-group border border-info rounded col-6">
           <li class="list-group-item">
             Monday, May 4<i class="fas fa-cloud-sun"></i>
             72°F/55°F

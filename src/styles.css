@@ -21,8 +21,7 @@ img {
 }
 
 ul {
-  display: block;
-  margin: 0 auto;
+  display: inline;
   max-width: 90%;
 }
 
@@ -50,10 +49,6 @@ btn-primary {
 .list-group-item {
   background: none;
   margin: 5px;
-}
-
-#current-weather {
-  margin: 0 15%;
 }
 
 #open-source-signature {
