@@ -5,6 +5,8 @@ axios.get(apiUrl).then(setDefaultTemp);
 
 function setDefaultTemp(response) {
   let currentTemp = Math.round(response.data.main.temp);
+  celsiusTemp = response.data.main.temp;
+
   let temperatureDefault = document.querySelector("#current-temp");
   temperatureDefault.innerHTML = `${currentTemp}°C`;
 }
@@ -22,6 +24,7 @@ function updateCityTwo(response) {
   let cityReturn = response.data.name;
   let countryReturn = response.data.sys.country;
   let tempReturn = Math.round(response.data.main.temp);
+  celsiusTemp = response.data.main.temp;
 
   let currentCity = document.querySelector("#current-city");
   currentCity.innerHTML = `${cityReturn}, ${countryReturn}`;
@@ -55,6 +58,7 @@ function updateCurrentCity(response) {
   let currentTemp = Math.round(response.data.main.temp);
   let locationMain = document.querySelector("#current-city");
   let temperatureMain = document.querySelector("#current-temp");
+  celsiusTemp = response.data.main.temp;
 
   locationMain.innerHTML = `${currentCity}, ${currentCountry}`;
   temperatureMain.innerHTML = `${currentTemp}°C`;
@@ -95,3 +99,22 @@ let month = months[now.getMonth()];
 
 let h4 = document.querySelector("h4");
 h4.innerHTML = `${day}, ${hour}:${minutes}<br />${month} ${date}, ${year}`;
+
+function convertToFahrenheit(event) {
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  let temperatureMain = document.querySelector("#current-temp");
+  temperatureMain.innerHTML = `${Math.round(fahrenheitTemp)}°F`;
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
+
+function convertToCelsius(event) {
+  let temperatureMain = document.querySelector("#current-temp");
+  temperatureMain.innerHTML = `${Math.round(celsiusTemp)}°F`;
+}
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", convertToCelsius);
+
+let celsiusTemp = null;
