@@ -40,12 +40,6 @@ function updateCityTwo(response) {
   currentDescription.innerHTML = `${weatherDescription}`;
 }
 
-let searchButton = document.querySelector("#search-button");
-searchButton.addEventListener("click", updateCity);
-
-let currentCityButton = document.querySelector("#current-city-button");
-currentCityButton.addEventListener("click", showPosition);
-
 function showPosition(event) {
   navigator.geolocation.getCurrentPosition(getCurrentCityData);
 }
@@ -72,6 +66,23 @@ function updateCurrentCity(response) {
   temperatureMain.innerHTML = `${currentTemp}°C`;
   currentDescription.innerHTML = `${weatherDescription}`;
 }
+
+function convertToFahrenheit(event) {
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  let temperatureMain = document.querySelector("#current-temp");
+  temperatureMain.innerHTML = `${Math.round(fahrenheitTemp)}°F`;
+}
+
+function convertToCelsius(event) {
+  let temperatureMain = document.querySelector("#current-temp");
+  temperatureMain.innerHTML = `${Math.round(celsiusTemp)}°F`;
+}
+
+let searchButton = document.querySelector("#search-button");
+searchButton.addEventListener("click", updateCity);
+
+let currentCityButton = document.querySelector("#current-city-button");
+currentCityButton.addEventListener("click", showPosition);
 
 let now = new Date();
 let date = now.getDate();
@@ -109,19 +120,8 @@ let month = months[now.getMonth()];
 let dateAndTime = document.querySelector("#dateAndTime");
 dateAndTime.innerHTML = `${day}, ${hour}:${minutes}<br />${month} ${date}, ${year}`;
 
-function convertToFahrenheit(event) {
-  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
-  let temperatureMain = document.querySelector("#current-temp");
-  temperatureMain.innerHTML = `${Math.round(fahrenheitTemp)}°F`;
-}
-
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
-
-function convertToCelsius(event) {
-  let temperatureMain = document.querySelector("#current-temp");
-  temperatureMain.innerHTML = `${Math.round(celsiusTemp)}°F`;
-}
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
