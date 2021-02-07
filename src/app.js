@@ -4,8 +4,12 @@ let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=San+Francisco&un
 axios.get(apiUrl).then(setDefaultTemp);
 
 function setDefaultTemp(response) {
+  let weatherDescription = response.data.weather[0].description;
   let currentTemp = Math.round(response.data.main.temp);
   celsiusTemp = response.data.main.temp;
+
+  let currentDescription = document.querySelector("#weather-description");
+  currentDescription.innerHTML = `${weatherDescription}`;
 
   let temperatureDefault = document.querySelector("#current-temp");
   temperatureDefault.innerHTML = `${currentTemp}°C`;
@@ -14,7 +18,6 @@ function setDefaultTemp(response) {
 function updateCity(event) {
   event.preventDefault();
   let searchBar = document.querySelector("#city-search-bar");
-  let apiKey = "59f62e89b6fe8b8e9e10ac59471b14c9";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchBar.value}&units=metric&appid=${apiKey}`;
 
   axios.get(apiUrl).then(updateCityTwo);
@@ -24,6 +27,7 @@ function updateCityTwo(response) {
   let cityReturn = response.data.name;
   let countryReturn = response.data.sys.country;
   let tempReturn = Math.round(response.data.main.temp);
+  let weatherDescription = response.data.weather[0].description;
   celsiusTemp = response.data.main.temp;
 
   let currentCity = document.querySelector("#current-city");
@@ -31,6 +35,9 @@ function updateCityTwo(response) {
 
   let currentTemp = document.querySelector("#current-temp");
   currentTemp.innerHTML = `${tempReturn}°C`;
+
+  let currentDescription = document.querySelector("#weather-description");
+  currentDescription.innerHTML = `${weatherDescription}`;
 }
 
 let searchButton = document.querySelector("#search-button");
@@ -46,7 +53,6 @@ function showPosition(event) {
 function getCurrentCityData(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiKey = "59f62e89b6fe8b8e9e10ac59471b14c9";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
 
   axios.get(apiUrl).then(updateCurrentCity);
@@ -56,12 +62,15 @@ function updateCurrentCity(response) {
   let currentCity = response.data.name;
   let currentCountry = response.data.sys.country;
   let currentTemp = Math.round(response.data.main.temp);
+  let weatherDescription = response.data.weather[0].description;
   let locationMain = document.querySelector("#current-city");
   let temperatureMain = document.querySelector("#current-temp");
+  let currentDescription = document.querySelector("#weather-description");
   celsiusTemp = response.data.main.temp;
 
   locationMain.innerHTML = `${currentCity}, ${currentCountry}`;
   temperatureMain.innerHTML = `${currentTemp}°C`;
+  currentDescription.innerHTML = `${weatherDescription}`;
 }
 
 let now = new Date();
