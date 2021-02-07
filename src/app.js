@@ -97,8 +97,8 @@ let months = [
 ];
 let month = months[now.getMonth()];
 
-let h4 = document.querySelector("h4");
-h4.innerHTML = `${day}, ${hour}:${minutes}<br />${month} ${date}, ${year}`;
+let dateAndTime = document.querySelector("#dateAndTime");
+dateAndTime.innerHTML = `${day}, ${hour}:${minutes}<br />${month} ${date}, ${year}`;
 
 function convertToFahrenheit(event) {
   let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
