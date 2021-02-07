@@ -7,6 +7,11 @@ function setDefaultTemp(response) {
   let weatherDescription = response.data.weather[0].description;
   let currentTemp = Math.round(response.data.main.temp);
   celsiusTemp = response.data.main.temp;
+  let humidity = response.data.main.humidity;
+  console.log(response);
+
+  let currentHumidity = document.querySelector("#current-humidity");
+  currentHumidity.innerHTML = `Humidity: ${humidity}%`;
 
   let currentDescription = document.querySelector("#weather-description");
   currentDescription.innerHTML = `${weatherDescription}`;
@@ -28,6 +33,7 @@ function updateCityTwo(response) {
   let countryReturn = response.data.sys.country;
   let tempReturn = Math.round(response.data.main.temp);
   let weatherDescription = response.data.weather[0].description;
+  let humidity = response.data.main.humidity;
   celsiusTemp = response.data.main.temp;
 
   let currentCity = document.querySelector("#current-city");
@@ -38,6 +44,9 @@ function updateCityTwo(response) {
 
   let currentDescription = document.querySelector("#weather-description");
   currentDescription.innerHTML = `${weatherDescription}`;
+
+  let currentHumidity = document.querySelector("#current-humidity");
+  currentHumidity.innerHTML = `Humidity: ${humidity}%`;
 }
 
 function showPosition(event) {
@@ -57,14 +66,17 @@ function updateCurrentCity(response) {
   let currentCountry = response.data.sys.country;
   let currentTemp = Math.round(response.data.main.temp);
   let weatherDescription = response.data.weather[0].description;
+  let humidity = response.data.main.humidity;
   let locationMain = document.querySelector("#current-city");
   let temperatureMain = document.querySelector("#current-temp");
   let currentDescription = document.querySelector("#weather-description");
+  let currentHumidity = document.querySelector("#current-humidity");
   celsiusTemp = response.data.main.temp;
 
   locationMain.innerHTML = `${currentCity}, ${currentCountry}`;
   temperatureMain.innerHTML = `${currentTemp}°C`;
   currentDescription.innerHTML = `${weatherDescription}`;
+  currentHumidity.innerHTML = `Humidity: ${humidity}%`;
 }
 
 function convertToFahrenheit(event) {
