@@ -4,11 +4,11 @@ let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=San+Francisco&un
 axios.get(apiUrl).then(setDefaultTemp);
 
 function setDefaultTemp(response) {
-  let weatherDescription = response.data.weather[0].description;
+  weatherDescription = response.data.weather[0].description;
   let currentTemp = Math.round(response.data.main.temp);
   celsiusTemp = response.data.main.temp;
-  let humidity = response.data.main.humidity;
-  console.log(response);
+  humidity = response.data.main.humidity;
+  windSpeed = Math.round(response.data.wind.speed);
 
   let currentHumidity = document.querySelector("#current-humidity");
   currentHumidity.innerHTML = `Humidity: ${humidity}%`;
@@ -18,6 +18,9 @@ function setDefaultTemp(response) {
 
   let temperatureDefault = document.querySelector("#current-temp");
   temperatureDefault.innerHTML = `${currentTemp}°C`;
+
+  let currentWindSpeed = document.querySelector("#current-wind-speed");
+  currentWindSpeed.innerHTML = `Wind Speed: ${windSpeed}km/h`;
 }
 
 function updateCity(event) {
@@ -32,9 +35,10 @@ function updateCityTwo(response) {
   let cityReturn = response.data.name;
   let countryReturn = response.data.sys.country;
   let tempReturn = Math.round(response.data.main.temp);
-  let weatherDescription = response.data.weather[0].description;
-  let humidity = response.data.main.humidity;
+  weatherDescription = response.data.weather[0].description;
+  humidity = response.data.main.humidity;
   celsiusTemp = response.data.main.temp;
+  windSpeed = Math.round(response.data.wind.speed);
 
   let currentCity = document.querySelector("#current-city");
   currentCity.innerHTML = `${cityReturn}, ${countryReturn}`;
@@ -47,6 +51,9 @@ function updateCityTwo(response) {
 
   let currentHumidity = document.querySelector("#current-humidity");
   currentHumidity.innerHTML = `Humidity: ${humidity}%`;
+
+  let currentWindSpeed = document.querySelector("#current-wind-speed");
+  currentWindSpeed.innerHTML = `Wind Speed: ${windSpeed}km/h`;
 }
 
 function showPosition(event) {
@@ -65,18 +72,25 @@ function updateCurrentCity(response) {
   let currentCity = response.data.name;
   let currentCountry = response.data.sys.country;
   let currentTemp = Math.round(response.data.main.temp);
-  let weatherDescription = response.data.weather[0].description;
-  let humidity = response.data.main.humidity;
-  let locationMain = document.querySelector("#current-city");
-  let temperatureMain = document.querySelector("#current-temp");
-  let currentDescription = document.querySelector("#weather-description");
-  let currentHumidity = document.querySelector("#current-humidity");
+  weatherDescription = response.data.weather[0].description;
+  humidity = response.data.main.humidity;
   celsiusTemp = response.data.main.temp;
+  windSpeed = Math.round(response.data.wind.speed);
 
+  let locationMain = document.querySelector("#current-city");
   locationMain.innerHTML = `${currentCity}, ${currentCountry}`;
+
+  let temperatureMain = document.querySelector("#current-temp");
   temperatureMain.innerHTML = `${currentTemp}°C`;
+
+  let currentDescription = document.querySelector("#weather-description");
   currentDescription.innerHTML = `${weatherDescription}`;
+
+  let currentHumidity = document.querySelector("#current-humidity");
   currentHumidity.innerHTML = `Humidity: ${humidity}%`;
+
+  let currentWindSpeed = document.querySelector("#current-wind-speed");
+  currentWindSpeed.innerHTML = `Wind Speed: ${windSpeed}km/h`;
 }
 
 function convertToFahrenheit(event) {
@@ -87,7 +101,7 @@ function convertToFahrenheit(event) {
 
 function convertToCelsius(event) {
   let temperatureMain = document.querySelector("#current-temp");
-  temperatureMain.innerHTML = `${Math.round(celsiusTemp)}°F`;
+  temperatureMain.innerHTML = `${Math.round(celsiusTemp)}°C`;
 }
 
 let searchButton = document.querySelector("#search-button");
@@ -139,3 +153,6 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
 
 let celsiusTemp = null;
+let humidity = null;
+let weatherDescription = null;
+let windSpeed = null;
