@@ -142,6 +142,9 @@ let months = [
   "December",
 ];
 let month = months[now.getMonth()];
+//if (minutes < 10) {
+//  `0${minutes}`;
+//}
 
 let dateAndTime = document.querySelector("#dateAndTime");
 dateAndTime.innerHTML = `${day}, ${hour}:${minutes}<br />${month} ${date}, ${year}`;

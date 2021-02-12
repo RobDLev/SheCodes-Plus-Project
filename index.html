@@ -19,70 +19,74 @@
     <link rel="stylesheet" href="src/styles.css" />
   </head>
   <body>
-    <div class="container border border-3 border-info rounded px-4 py-3 col-6">
-      <form>
-        <div class="row">
-          <div>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="ex. Paris, France"
-              id="city-search-bar"
-            />
-            <label>Search a Different Location</label>
-            <input
-              class="btn btn-primary"
-              type="submit"
-              value="Search"
-              id="search-button"
-            />
-            <button
-              type="button"
-              class="btn btn-success"
-              id="current-city-button"
-            >
-              Current City
-            </button>
+    <div class="container col-6">
+      <div class="weather-app-wrapper">
+        <div class="weather-app border border-3 border-info rounded px-4 py-3">
+          <form>
+            <div class="row">
+              <div>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="ex. Paris, France"
+                  id="city-search-bar"
+                />
+                <label>Search a Different Location</label>
+                <input
+                  class="btn btn-primary"
+                  type="submit"
+                  value="Search"
+                  id="search-button"
+                />
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  id="current-city-button"
+                >
+                  Current City
+                </button>
+              </div>
+            </div>
+          </form>
+          <div id="dateAndTime">
+            <h4>Sunday, 3:35 PM<br />May 3, 2021</h4>
+          </div>
+          <div class="row">
+            <div class="border border-info rounded col" id="current-weather">
+              <h3 id="current-city">San Francisco, US</h3>
+              <h3 id="current-temp">11°C</h3>
+              <span class="temp-scale">
+                <a href="#" id="celsius-link">°C</a>
+                |
+                <a href="#" id="fahrenheit-link">°F</a>
+              </span>
+
+              <img
+                src="images/mostlycloudy.png"
+                class="img-fluid"
+                alt="mostly cloudy"
+              />
+              <h5 id="weather-description">Weather Description</h5>
+            </div>
+            <div class="border border-info rounded col">
+              <ul>
+                <li id="current-wind-speed">Wind Speed: 10km/h</li>
+                <li id="current-humidity">Humidity: 49%</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </form>
-      <div id="dateAndTime">
-        <h4>Sunday, 3:35 PM<br />May 3, 2021</h4>
-      </div>
-      <div class="row">
-        <div class="border border-info rounded col-6" id="current-weather">
-          <h3 id="current-city">San Francisco, US</h3>
-          <h3 id="current-temp">11°C</h3>
-          <span class="temp-scale">
-            <a href="#" id="celsius-link">°C</a>
-            |
-            <a href="#" id="fahrenheit-link">°F</a>
-          </span>
-
-          <img
-            src="images/mostlycloudy.png"
-            class="img-fluid"
-            alt="mostly cloudy"
-          />
-          <h5 id="weather-description">Weather Description</h5>
-        </div>
-        <div class="border border-info rounded col-6" id="current-wind-speed">
-          Wind Speed: 10km/h
-        </div>
-        <div class="border border-info rounded col-6" id="current-humidity">
-          Humidity: 49%
-        </div>
+        <p id="open-source-signature">
+          <a
+            href="https://github.com/RobDLev/SheCodes-Plus-Project"
+            id="github-link"
+          >
+            Open-source code
+          </a>
+          by Robin Levinson
+        </p>
       </div>
     </div>
-    <p id="open-source-signature">
-      <a
-        href="https://github.com/RobDLev/SheCodes-Plus-Project"
-        id="github-link"
-      >
-        Open-source code
-      </a>
-      by Robin Levinson
-    </p>
     <script src="src/app.js"></script>
   </body>
 </html>
