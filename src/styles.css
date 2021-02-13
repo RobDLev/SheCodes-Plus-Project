@@ -20,6 +20,9 @@ img {
 
 li {
   list-style: none;
+  text-align: center;
+  font-size: x-large;
+  margin: 10px 0;
 }
 
 .weather-app-wrapper {
