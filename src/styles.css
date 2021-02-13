@@ -57,6 +57,7 @@ btn-primary {
 
 #weather-description {
   text-align: center;
+  text-transform: capitalize;
 }
 
 #open-source-signature {

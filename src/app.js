@@ -10,8 +10,11 @@ function setDefaultTemp(response) {
   humidity = response.data.main.humidity;
   windSpeed = Math.round(response.data.wind.speed);
 
+  let dateAndTime = document.querySelector("#dateAndTime");
+  dateAndTime.innerHTML = formatDate();
+
   let currentHumidity = document.querySelector("#current-humidity");
-  currentHumidity.innerHTML = `Humidity: ${humidity}%`;
+  currentHumidity.innerHTML = `${humidity}%`;
 
   let currentDescription = document.querySelector("#weather-description");
   currentDescription.innerHTML = `${weatherDescription}`;
@@ -20,7 +23,48 @@ function setDefaultTemp(response) {
   temperatureDefault.innerHTML = `${currentTemp}°C`;
 
   let currentWindSpeed = document.querySelector("#current-wind-speed");
-  currentWindSpeed.innerHTML = `Wind Speed: ${windSpeed}km/h`;
+  currentWindSpeed.innerHTML = `${windSpeed}km/h`;
+}
+
+function formatDate() {
+  let now = new Date();
+  let date = now.getDate();
+  let year = now.getFullYear();
+  let hour = now.getHours();
+  let minutes = now.getMinutes();
+
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[now.getDay()];
+
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let month = months[now.getMonth()];
+
+  return `${day}, ${hour}:${minutes}<br />${month} ${date}, ${year}`;
 }
 
 function updateCity(event) {
@@ -50,10 +94,10 @@ function updateCityTwo(response) {
   currentDescription.innerHTML = `${weatherDescription}`;
 
   let currentHumidity = document.querySelector("#current-humidity");
-  currentHumidity.innerHTML = `Humidity: ${humidity}%`;
+  currentHumidity.innerHTML = `${humidity}%`;
 
   let currentWindSpeed = document.querySelector("#current-wind-speed");
-  currentWindSpeed.innerHTML = `Wind Speed: ${windSpeed}km/h`;
+  currentWindSpeed.innerHTML = `${windSpeed}km/h`;
 }
 
 function showPosition(event) {
@@ -87,10 +131,10 @@ function updateCurrentCity(response) {
   currentDescription.innerHTML = `${weatherDescription}`;
 
   let currentHumidity = document.querySelector("#current-humidity");
-  currentHumidity.innerHTML = `Humidity: ${humidity}%`;
+  currentHumidity.innerHTML = `${humidity}%`;
 
   let currentWindSpeed = document.querySelector("#current-wind-speed");
-  currentWindSpeed.innerHTML = `Wind Speed: ${windSpeed}km/h`;
+  currentWindSpeed.innerHTML = `${windSpeed}km/h`;
 }
 
 function convertToFahrenheit(event) {
@@ -109,45 +153,6 @@ searchButton.addEventListener("click", updateCity);
 
 let currentCityButton = document.querySelector("#current-city-button");
 currentCityButton.addEventListener("click", showPosition);
-
-let now = new Date();
-let date = now.getDate();
-let year = now.getFullYear();
-let hour = now.getHours();
-let minutes = now.getMinutes();
-
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-let month = months[now.getMonth()];
-//if (minutes < 10) {
-//  `0${minutes}`;
-//}
-
-let dateAndTime = document.querySelector("#dateAndTime");
-dateAndTime.innerHTML = `${day}, ${hour}:${minutes}<br />${month} ${date}, ${year}`;
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
