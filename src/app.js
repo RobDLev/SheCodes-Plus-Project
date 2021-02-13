@@ -7,23 +7,31 @@ function setDefaultTemp(response) {
   weatherDescription = response.data.weather[0].description;
   let currentTemp = Math.round(response.data.main.temp);
   celsiusTemp = response.data.main.temp;
+  iconCode = response.data.weather[0].icon;
   humidity = response.data.main.humidity;
   windSpeed = Math.round(response.data.wind.speed);
 
   let dateAndTime = document.querySelector("#dateAndTime");
   dateAndTime.innerHTML = formatDate();
 
-  let currentHumidity = document.querySelector("#current-humidity");
-  currentHumidity.innerHTML = `${humidity}%`;
+  let temperatureDefault = document.querySelector("#current-temp");
+  temperatureDefault.innerHTML = `${currentTemp}°C`;
+
+  let currentIcon = document.querySelector("#weather-icon");
+  currentIcon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${iconCode}@2x.png`
+  );
+  currentIcon.setAttribute("alt", response.data.weather[0].description);
 
   let currentDescription = document.querySelector("#weather-description");
   currentDescription.innerHTML = `${weatherDescription}`;
 
-  let temperatureDefault = document.querySelector("#current-temp");
-  temperatureDefault.innerHTML = `${currentTemp}°C`;
-
   let currentWindSpeed = document.querySelector("#current-wind-speed");
   currentWindSpeed.innerHTML = `${windSpeed}km/h`;
+
+  let currentHumidity = document.querySelector("#current-humidity");
+  currentHumidity.innerHTML = `${humidity}%`;
 }
 
 function formatDate() {
@@ -82,6 +90,7 @@ function updateCityTwo(response) {
   let cityReturn = response.data.name;
   let countryReturn = response.data.sys.country;
   let tempReturn = Math.round(response.data.main.temp);
+  iconCode = response.data.weather[0].icon;
   weatherDescription = response.data.weather[0].description;
   humidity = response.data.main.humidity;
   celsiusTemp = response.data.main.temp;
@@ -92,6 +101,13 @@ function updateCityTwo(response) {
 
   let currentTemp = document.querySelector("#current-temp");
   currentTemp.innerHTML = `${tempReturn}°C`;
+
+  let currentIcon = document.querySelector("#weather-icon");
+  currentIcon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${iconCode}@2x.png`
+  );
+  currentIcon.setAttribute("alt", response.data.weather[0].description);
 
   let currentDescription = document.querySelector("#weather-description");
   currentDescription.innerHTML = `${weatherDescription}`;
@@ -119,6 +135,7 @@ function updateCurrentCity(response) {
   let currentCity = response.data.name;
   let currentCountry = response.data.sys.country;
   let currentTemp = Math.round(response.data.main.temp);
+  iconCode = response.data.weather[0].icon;
   weatherDescription = response.data.weather[0].description;
   humidity = response.data.main.humidity;
   celsiusTemp = response.data.main.temp;
@@ -129,6 +146,13 @@ function updateCurrentCity(response) {
 
   let temperatureMain = document.querySelector("#current-temp");
   temperatureMain.innerHTML = `${currentTemp}°C`;
+
+  let currentIcon = document.querySelector("#weather-icon");
+  currentIcon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${iconCode}@2x.png`
+  );
+  currentIcon.setAttribute("alt", response.data.weather[0].description);
 
   let currentDescription = document.querySelector("#weather-description");
   currentDescription.innerHTML = `${weatherDescription}`;
@@ -167,3 +191,4 @@ let celsiusTemp = null;
 let humidity = null;
 let weatherDescription = null;
 let windSpeed = null;
+let iconCode = null;
