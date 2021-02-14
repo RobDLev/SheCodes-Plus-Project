@@ -11,7 +11,7 @@ function setDefaultTemp(response) {
   humidity = response.data.main.humidity;
   windSpeed = Math.round(response.data.wind.speed);
 
-  let dateAndTime = document.querySelector("#dateAndTime");
+  let dateAndTime = document.querySelector("#date-and-time");
   dateAndTime.innerHTML = formatDate();
 
   let temperatureDefault = document.querySelector("#current-temp");

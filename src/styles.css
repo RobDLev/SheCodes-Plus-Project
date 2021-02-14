@@ -21,8 +21,8 @@ img {
 li {
   list-style: none;
   text-align: center;
-  font-size: large;
-  margin: 10px 0;
+  font-size: x-large;
+  margin: 8px 0;
 }
 
 .weather-app-wrapper {
@@ -50,7 +50,7 @@ btn-primary {
   margin-top: 15px;
 }
 
-#dateAndTime {
+#date-and-time {
   text-align: center;
   font-size: 24px;
   font-weight: 700;
