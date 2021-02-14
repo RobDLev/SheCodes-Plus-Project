@@ -18,6 +18,11 @@ img {
   margin: 0 auto;
 }
 
+ul {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
 li {
   list-style: none;
   text-align: center;
